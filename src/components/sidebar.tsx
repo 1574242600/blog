@@ -11,7 +11,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children, defaultOpenOnMobile = false
             onSwipe: event => {
                 if (event.direction === 4 || event.direction === 6) {
                     let offset =
-                        ((event.offset.x / 50) ** 2) *
+                        ((event.offset.x / 40) ** 2) *
                         (event.direction === 4 ? -1 : 1) +
                         xOffset
                     if (offset > 0) offset = 0
@@ -22,14 +22,14 @@ const Sidebar: React.FC<SidebarProps> = ({ children, defaultOpenOnMobile = false
             },
             onSwipeEnd: () => {
                 if (isOpen) {
-                    xOffset < -85 ? setXOffset(-256) : setXOffset(0)
+                    xOffset < -10 ? setXOffset(-256) : setXOffset(0)
                 } else {
-                    xOffset < -170 ? setXOffset(-256) : setXOffset(0)
+                    xOffset < -246 ? setXOffset(-256) : setXOffset(0)
                 }
             }
         },
         {
-            timeDiff: 0,
+            timeDiff: 50,
             throttleDelay: 25
         }
     )
@@ -38,7 +38,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children, defaultOpenOnMobile = false
         if (xOffset === 0 || xOffset === -256) setIsOpen(xOffset === 0)
     }, [xOffset])
 
-    const lgClass = ' lg:absolute'
+    const lgClass = ' lg:absolute lg:!left-auto'
     const lgMClass = ' lg-m:fixed lg-m:z-10'
     // todo 电脑端样式
     return (
