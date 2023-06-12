@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "target": "esnext",                                  
+    "lib": ["dom", "esnext"],                                    
+    "jsx": "react",                               
+    "module": "esnext",                                               
+    "moduleResolution": "node",                      
+    "esModuleInterop": true,                             
+    "forceConsistentCasingInFileNames": true,            
+    "strict": true,                                     
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "paths": {
+      "@hooks/*": ["./src/hooks/*"]
+    }
+  },
+  "include": [
+    "./src/**/*", 
+    "./gatsby-node.ts", 
+    "./gatsby-browser.tsx",
+    "./gatsby-config.ts", 
+    "./plugins/**/*"
+  ]
+}
