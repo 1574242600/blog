@@ -48,7 +48,7 @@ export const useSwipe = (
         const timeDiff = XYT.time - startXYT.time
         const swipeEvnet = toSwipeEvent(XYT, startXYT)
 
-        if (timeDiff > settings.timeDiff) {
+        if (timeDiff > settings.timeDiff || lastXYT != null) {
             if (!isSwipeStart) {
                 if (Math.abs(swipeEvnet.offset.x) > 30 || Math.abs(swipeEvnet.offset.y) > 30) setIsSwipeStart(true)
                 return
