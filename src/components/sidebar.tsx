@@ -38,7 +38,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children, defaultOpenOnMobile = false
         if (xOffset === 0 || xOffset === -256) setIsOpen(xOffset === 0)
     }, [xOffset])
 
-    const lgClass = ' lg:absolute'
+    const lgClass = ' lg:absolute lg:!left-auto'
     const lgMClass = ' lg-m:fixed lg-m:z-10'
     // todo 电脑端样式
     return (
