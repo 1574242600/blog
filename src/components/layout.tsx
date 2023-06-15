@@ -6,11 +6,13 @@ import Sidebar from './sidebar'
 import Avatar from './avatar'
 import Background from './background'
 import { Menu, Item } from './menu'
+import Footer from './footer'
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-    const { title } = useSiteMetadata()
+    const siteMetadata = useSiteMetadata()
     const menuItemsData = useMenuItemsData()
 
+    const { title } = siteMetadata
     const path = location.pathname
     const defaultActiveKey = (path.at(-1) === '/' ? path.slice(0, -1) : path) || '/'
 
@@ -25,7 +27,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                             {title}
                         </div>
                     </div>
-                    <div className='h-0.5 w-full bg-gray-200 '></div>
+                    <div className='h-px w-full bg-gray-200 '></div>
                     <Menu
                         defaultActiveKey={defaultActiveKey}
                         onItemActiveChange={key => {
@@ -34,6 +36,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     >
                         {renderItems(menuItemsData)}
                     </Menu>
+                    <div className='absolute bottom-0 w-full '>
+                        <Footer siteMetadata={siteMetadata} />
+                    </div>
                 </Sidebar>
                 <div className='lg:ml-80'>{children}</div>
             </div>
