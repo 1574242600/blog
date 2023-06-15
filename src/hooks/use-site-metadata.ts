@@ -7,7 +7,18 @@ export const useSiteMetadata = (): SiteMetadata => {
                 site {
                     siteMetadata {
                         title
+                        author
                         siteUrl
+                        since
+                        contacts {
+                            name
+                            id
+                            url
+                        }
+                        comment {
+                            type
+                            id
+                        }
                     }
                 }
             }
@@ -19,5 +30,16 @@ export const useSiteMetadata = (): SiteMetadata => {
 
 export interface SiteMetadata {
     title: string
+    author: string
     siteUrl: string
+    since: string
+    contacts: Array<{
+        name: string
+        id: string
+        url: string
+    }>
+    comment: Array<{
+        type: string
+        id: string
+    }>
 }

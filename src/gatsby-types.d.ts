@@ -2440,25 +2440,97 @@ type SitePluginSortInput = {
 };
 
 type SiteSiteMetadata = {
+  readonly author: Maybe<Scalars['String']>;
+  readonly comment: Maybe<SiteSiteMetadataComment>;
+  readonly contacts: Maybe<ReadonlyArray<Maybe<SiteSiteMetadataContacts>>>;
   readonly description: Maybe<Scalars['String']>;
+  readonly since: Maybe<Scalars['Date']>;
   readonly siteUrl: Maybe<Scalars['String']>;
   readonly title: Maybe<Scalars['String']>;
 };
 
+
+type SiteSiteMetadata_sinceArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+type SiteSiteMetadataComment = {
+  readonly id: Maybe<Scalars['String']>;
+  readonly type: Maybe<Scalars['String']>;
+};
+
+type SiteSiteMetadataCommentFieldSelector = {
+  readonly id: InputMaybe<FieldSelectorEnum>;
+  readonly type: InputMaybe<FieldSelectorEnum>;
+};
+
+type SiteSiteMetadataCommentFilterInput = {
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+  readonly type: InputMaybe<StringQueryOperatorInput>;
+};
+
+type SiteSiteMetadataCommentSortInput = {
+  readonly id: InputMaybe<SortOrderEnum>;
+  readonly type: InputMaybe<SortOrderEnum>;
+};
+
+type SiteSiteMetadataContacts = {
+  readonly id: Maybe<Scalars['String']>;
+  readonly name: Maybe<Scalars['String']>;
+  readonly url: Maybe<Scalars['String']>;
+};
+
+type SiteSiteMetadataContactsFieldSelector = {
+  readonly id: InputMaybe<FieldSelectorEnum>;
+  readonly name: InputMaybe<FieldSelectorEnum>;
+  readonly url: InputMaybe<FieldSelectorEnum>;
+};
+
+type SiteSiteMetadataContactsFilterInput = {
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+  readonly name: InputMaybe<StringQueryOperatorInput>;
+  readonly url: InputMaybe<StringQueryOperatorInput>;
+};
+
+type SiteSiteMetadataContactsFilterListInput = {
+  readonly elemMatch: InputMaybe<SiteSiteMetadataContactsFilterInput>;
+};
+
+type SiteSiteMetadataContactsSortInput = {
+  readonly id: InputMaybe<SortOrderEnum>;
+  readonly name: InputMaybe<SortOrderEnum>;
+  readonly url: InputMaybe<SortOrderEnum>;
+};
+
 type SiteSiteMetadataFieldSelector = {
+  readonly author: InputMaybe<FieldSelectorEnum>;
+  readonly comment: InputMaybe<SiteSiteMetadataCommentFieldSelector>;
+  readonly contacts: InputMaybe<SiteSiteMetadataContactsFieldSelector>;
   readonly description: InputMaybe<FieldSelectorEnum>;
+  readonly since: InputMaybe<FieldSelectorEnum>;
   readonly siteUrl: InputMaybe<FieldSelectorEnum>;
   readonly title: InputMaybe<FieldSelectorEnum>;
 };
 
 type SiteSiteMetadataFilterInput = {
+  readonly author: InputMaybe<StringQueryOperatorInput>;
+  readonly comment: InputMaybe<SiteSiteMetadataCommentFilterInput>;
+  readonly contacts: InputMaybe<SiteSiteMetadataContactsFilterListInput>;
   readonly description: InputMaybe<StringQueryOperatorInput>;
+  readonly since: InputMaybe<DateQueryOperatorInput>;
   readonly siteUrl: InputMaybe<StringQueryOperatorInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
 };
 
 type SiteSiteMetadataSortInput = {
+  readonly author: InputMaybe<SortOrderEnum>;
+  readonly comment: InputMaybe<SiteSiteMetadataCommentSortInput>;
+  readonly contacts: InputMaybe<SiteSiteMetadataContactsSortInput>;
   readonly description: InputMaybe<SortOrderEnum>;
+  readonly since: InputMaybe<SortOrderEnum>;
   readonly siteUrl: InputMaybe<SortOrderEnum>;
   readonly title: InputMaybe<SortOrderEnum>;
 };
@@ -2539,7 +2611,7 @@ type MenuItemsDataQuery = { readonly allMenuJson: { readonly nodes: ReadonlyArra
 type SiteMetaDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type SiteMetaDataQuery = { readonly site: { readonly siteMetadata: { readonly title: string | null, readonly siteUrl: string | null } | null } | null };
+type SiteMetaDataQuery = { readonly site: { readonly siteMetadata: { readonly title: string | null, readonly author: string | null, readonly siteUrl: string | null, readonly since: string | null, readonly contacts: ReadonlyArray<{ readonly name: string | null, readonly id: string | null, readonly url: string | null } | null> | null, readonly comment: { readonly type: string | null, readonly id: string | null } | null } | null } | null };
 
 
 }
