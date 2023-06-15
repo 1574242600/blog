@@ -45,7 +45,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children, defaultOpenOnMobile = false
         <div>
             <div
                 className={
-                    'h-full w-64' + lgClass + lgMClass + ' bg-gray-100 shadow'
+                    'h-full w-52' + lgClass + lgMClass + ' bg-gray-100 shadow'
                 }
                 style={{
                     left: xOffset

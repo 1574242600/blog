@@ -3,7 +3,6 @@ import { navigate } from 'gatsby'
 import { useSiteMetadata } from '@hooks/use-site-metadata'
 import { useMenuItemsData, MenuItemData } from '@hooks/use-menu-items-data'
 import Sidebar from './sidebar'
-import Avatar from './avatar'
 import Background from './background'
 import Divider from './divider'
 import { Menu, Item } from './menu'
@@ -20,13 +19,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     return (
         <div>
             <Background />
-            <div className='max-w-5xl mx-auto'>
+            <div className='max-w-4xl mx-auto'>
                 <Sidebar defaultOpenOnMobile={false}>
-                    <div className='pt-2 bg-gradient-to-r from-green-400 to-green-500'>
-                        <Avatar alt={title} />
-                        <div className='font-mono font-medium text-xl text-center p-3 text-slate-700'>
-                            {title}
-                        </div>
+                    <div className='flex justify-center flex-col h-36 p-1 bg-green-400'>
+                        <div className='text-center text-4xl first-line:font-mono font-black text-gray-600'>{title}</div>
                     </div>
                     <Divider />
                     <Menu
@@ -37,12 +33,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     >
                         {renderItems(menuItemsData)}
                     </Menu>
-                    <div className='absolute bottom-0 w-full '>
+                    <div className='absolute bottom-0 w-full'>
                         <Divider />
                         <Footer siteMetadata={siteMetadata} />
                     </div>
                 </Sidebar>
-                <div className='lg:ml-80'>{children}</div>
+                <div className='lg:ml-64'>{children}</div>
             </div>
         </div>
     )
