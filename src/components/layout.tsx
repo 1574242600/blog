@@ -5,6 +5,7 @@ import { useMenuItemsData, MenuItemData } from '@hooks/use-menu-items-data'
 import Sidebar from './sidebar'
 import Avatar from './avatar'
 import Background from './background'
+import Divider from './divider'
 import { Menu, Item } from './menu'
 import Footer from './footer'
 
@@ -27,7 +28,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                             {title}
                         </div>
                     </div>
-                    <div className='h-px w-full bg-gray-200 '></div>
+                    <Divider />
                     <Menu
                         defaultActiveKey={defaultActiveKey}
                         onItemActiveChange={key => {
@@ -37,6 +38,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                         {renderItems(menuItemsData)}
                     </Menu>
                     <div className='absolute bottom-0 w-full '>
+                        <Divider />
                         <Footer siteMetadata={siteMetadata} />
                     </div>
                 </Sidebar>
