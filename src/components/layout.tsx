@@ -7,6 +7,7 @@ import Background from './background'
 import Divider from './divider'
 import { Menu, Item } from './menu'
 import Footer from './footer'
+import Svg from './svg'
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
     const siteMetadata = useSiteMetadata()
@@ -45,8 +46,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 }
 
 const renderItems = (menu: MenuItemData[]): Array<ReturnType<typeof Item>> => {
-    return menu.map(({ name, path }) => {
-        return <Item key={path}>{name}</Item>
+    return menu.map(({ name, path, svgId }) => {
+        return (
+            <Item key={path}>
+                <div className='w-3/4 ml-2'>
+                    <Svg id={svgId} className='w-5 h-5 mr-4 inline-block'/>
+                    {name}
+                </div>
+            </Item>
+        )
     })
 }
 
