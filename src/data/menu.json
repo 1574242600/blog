@@ -1,6 +1,6 @@
 [
-    { "name": "主页", "path": "/" },
-    { "name": "归档", "path": "/archives" },
-    { "name": "朋友", "path": "/friends" },
-    { "name": "关于", "path": "/about" }
+    { "name": "主页", "svgId": "bs/fill-house-door", "path": "/" },
+    { "name": "归档", "svgId": "bs/fill-archive", "path": "/archives" },
+    { "name": "朋友", "svgId": "bs/fill-people", "path": "/friends" },
+    { "name": "关于", "svgId": "bs/fill-heart", "path": "/about" }
 ]
