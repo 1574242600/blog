@@ -7,13 +7,14 @@ import Background from './background'
 import Divider from './divider'
 import { Menu, Item } from './menu'
 import Footer from './footer'
+import Contacts from './contacts'
 import Svg from './svg'
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
     const siteMetadata = useSiteMetadata()
     const menuItemsData = useMenuItemsData()
 
-    const { title } = siteMetadata
+    const { title, contacts } = siteMetadata
     const path = location.pathname
     const defaultActiveKey = (path.at(-1) === '/' ? path.slice(0, -1) : path) || '/'
 
@@ -35,6 +36,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                         {renderItems(menuItemsData)}
                     </Menu>
                     <div className='absolute bottom-0 w-full'>
+                        <Contacts contacts={contacts} />
                         <Divider />
                         <Footer siteMetadata={siteMetadata} />
                     </div>
