@@ -21,7 +21,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     return (
         <div>
             <Background />
-            <div className='max-w-4xl mx-auto'>
+            <div className='max-w-6xl mx-auto'>
                 <Sidebar defaultOpenOnMobile={false}>
                     <div className='flex justify-center flex-col h-36 p-1 bg-green-400'>
                         <div className='text-center text-4xl first-line:font-mono font-black text-gray-600'>{title}</div>
@@ -41,7 +41,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                         <Footer siteMetadata={siteMetadata} />
                     </div>
                 </Sidebar>
-                <div className='lg:ml-64'>{children}</div>
+                <div className='lg:ml-80'>{children}</div>
             </div>
         </div>
     )
