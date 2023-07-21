@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { SiteMetadata } from '@hooks/use-site-metadata'
+import Link from './link'
 
 const Footer: React.FC<FooterProps> = ({ siteMetadata }) => {
     const { title, author, since } = siteMetadata
@@ -54,24 +55,6 @@ const Since: React.FC<{ since: string }> = ({ since }) => {
             <span>{'博客已存活: '}</span>{toStr(new Date(since), time)}
         </div>
     )
-}
-
-const Link: React.FC<LinkProps> = ({ href, children }) => {
-    return (
-        <a
-            className='hover:text-blue-500'
-            href={href}
-            target='_blank'
-            rel='noreferrer'
-        >
-            {children}
-        </a>
-    )
-}
-
-interface LinkProps {
-    href: string
-    children: React.ReactNode
 }
 
 export interface FooterProps {
