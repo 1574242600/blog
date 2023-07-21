@@ -16,7 +16,7 @@ export const Svg: React.FC<SvgProps> = ({ id, className = '' }) => {
     return (
         <>
             { svg &&
-                <svg className={className} dangerouslySetInnerHTML={{ __html: svg }} />
+                <div className={className + ' align-middle'} dangerouslySetInnerHTML={{ __html: svg }} />
             }
         </>
     )
