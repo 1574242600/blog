@@ -3,29 +3,30 @@ import { navigate } from 'gatsby'
 import { useSiteMetadata } from '@hooks/use-site-metadata'
 import { useMenuItemsData, MenuItemData } from '@hooks/use-menu-items-data'
 import Sidebar from './sidebar'
-import Avatar from './avatar'
 import Background from './background'
+import Divider from './divider'
 import { Menu, Item } from './menu'
+import Footer from './footer'
+import Contacts from './contacts'
+import Svg from './svg'
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-    const { title } = useSiteMetadata()
+    const siteMetadata = useSiteMetadata()
     const menuItemsData = useMenuItemsData()
 
+    const { title, contacts } = siteMetadata
     const path = location.pathname
     const defaultActiveKey = (path.at(-1) === '/' ? path.slice(0, -1) : path) || '/'
 
     return (
         <div>
             <Background />
-            <div className='max-w-5xl mx-auto'>
+            <div className='max-w-6xl mx-auto'>
                 <Sidebar defaultOpenOnMobile={false}>
-                    <div className='pt-2 bg-gradient-to-r from-green-400 to-green-500'>
-                        <Avatar alt={title} />
-                        <div className='font-mono font-medium text-xl text-center p-3 text-slate-700'>
-                            {title}
-                        </div>
+                    <div className='flex justify-center flex-col h-36 p-1 bg-green-400'>
+                        <div className='text-center text-4xl first-line:font-mono font-black text-gray-600'>{title}</div>
                     </div>
-                    <div className='h-0.5 w-full bg-gray-200 '></div>
+                    <Divider />
                     <Menu
                         defaultActiveKey={defaultActiveKey}
                         onItemActiveChange={key => {
@@ -34,6 +35,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     >
                         {renderItems(menuItemsData)}
                     </Menu>
+                    <div className='absolute bottom-0 w-full'>
+                        <Contacts contacts={contacts} />
+                        <Divider />
+                        <Footer siteMetadata={siteMetadata} />
+                    </div>
                 </Sidebar>
                 <div className='lg:ml-80'>{children}</div>
             </div>
@@ -42,8 +48,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 }
 
 const renderItems = (menu: MenuItemData[]): Array<ReturnType<typeof Item>> => {
-    return menu.map(({ name, path }) => {
-        return <Item key={path}>{name}</Item>
+    return menu.map(({ name, path, svgId }) => {
+        return (
+            <Item key={path}>
+                <div className='w-3/4 ml-2'>
+                    <Svg id={svgId} className='w-5 h-5 mr-4 inline-block'/>
+                    {name}
+                </div>
+            </Item>
+        )
     })
 }
 

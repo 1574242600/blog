@@ -8,6 +8,7 @@ export const useMenuItemsData = (): MenuItemData[] => {
                     nodes {
                         name
                         path
+                        svgId
                     }
                 }
             }
@@ -20,4 +21,5 @@ export const useMenuItemsData = (): MenuItemData[] => {
 export interface MenuItemData {
     name: string
     path: string
+    svgId: string
 }

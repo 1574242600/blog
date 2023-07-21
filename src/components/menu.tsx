@@ -25,13 +25,13 @@ const Item: React.FC<ItemProps> = (props) => {
     const { children, onClick, active = false } = props
 
     const activeClass = ' border-r-4 border-green-500 bg-green-100'
-    const textClass = ' font-mono font-medium  text-xs text-left hover:text-green-600'
+    const textClass = ' font-mono font-medium text-md text-center text-gray-600 hover:text-green-500'
 
     return (
         <li
             onClick={onClick}
             className={
-                'h-10 leading-10 pl-2 cursor-pointer' +
+                'h-10 leading-10 pl-2 cursor-pointer hover:bg-gray-50' +
                 textClass +
                 (active ? activeClass : '')
             }

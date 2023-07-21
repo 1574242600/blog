@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -7,7 +7,7 @@ settings:
 dependencies:
   gatsby:
     specifier: ^5.10.0
-    version: 5.10.0(babel-eslint@10.1.0)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.5)
+    version: 5.10.0(babel-eslint@10.1.0)(react-dom@18.2.0)(react@18.2.0)(type-fest@4.0.0)(typescript@4.9.5)
   gatsby-plugin-image:
     specifier: ^3.10.0
     version: 3.10.0(@babel/core@7.22.1)(gatsby-plugin-sharp@5.10.0)(gatsby-source-filesystem@5.10.0)(gatsby@5.10.0)(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0)
@@ -85,6 +85,9 @@ devDependencies:
   tailwindcss:
     specifier: ^3.3.2
     version: 3.3.2
+  type-fest:
+    specifier: ^4.0.0
+    version: 4.0.0
   typescript:
     specifier: ^4.9.5
     version: 4.9.5
@@ -2297,7 +2300,7 @@ packages:
       chrome-trace-event: 1.0.3
       nullthrows: 1.1.1
 
-  /@pmmmwh/react-refresh-webpack-plugin@0.5.10(react-refresh@0.14.0)(webpack@5.84.1):
+  /@pmmmwh/react-refresh-webpack-plugin@0.5.10(react-refresh@0.14.0)(type-fest@4.0.0)(webpack@5.84.1):
     resolution: {integrity: sha512-j0Ya0hCFZPd4x40qLzbhGsh9TMtdb+CJQiso+WxLOPNasohq9cc5SNUcwsZaRH6++Xh91Xkm/xHCkuIiIu0LUA==}
     engines: {node: '>= 10.13'}
     peerDependencies:
@@ -2333,6 +2336,7 @@ packages:
       react-refresh: 0.14.0
       schema-utils: 3.1.2
       source-map: 0.7.4
+      type-fest: 4.0.0
       webpack: 5.84.1
 
   /@pnpm/config.env-replace@1.1.0:
@@ -3274,7 +3278,7 @@ packages:
       '@babel/core': 7.22.1
       '@babel/runtime': 7.22.3
       '@babel/types': 7.22.3
-      gatsby: 5.10.0(babel-eslint@10.1.0)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.5)
+      gatsby: 5.10.0(babel-eslint@10.1.0)(react-dom@18.2.0)(react@18.2.0)(type-fest@4.0.0)(typescript@4.9.5)
       gatsby-core-utils: 4.10.0
 
   /babel-plugin-syntax-trailing-function-commas@7.0.0-beta.0:
@@ -5647,7 +5651,7 @@ packages:
       chokidar: 3.5.3
       common-tags: 1.8.2
       fs-extra: 11.1.1
-      gatsby: 5.10.0(babel-eslint@10.1.0)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.5)
+      gatsby: 5.10.0(babel-eslint@10.1.0)(react-dom@18.2.0)(react@18.2.0)(type-fest@4.0.0)(typescript@4.9.5)
       gatsby-core-utils: 4.10.0
       gatsby-plugin-sharp: 5.10.0(gatsby@5.10.0)(graphql@16.6.0)
       gatsby-plugin-utils: 4.10.0(gatsby@5.10.0)(graphql@16.6.0)
@@ -5673,7 +5677,7 @@ packages:
       chokidar: 3.5.3
       fs-exists-cached: 1.0.0
       fs-extra: 11.1.1
-      gatsby: 5.10.0(babel-eslint@10.1.0)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.5)
+      gatsby: 5.10.0(babel-eslint@10.1.0)(react-dom@18.2.0)(react@18.2.0)(type-fest@4.0.0)(typescript@4.9.5)
       gatsby-core-utils: 4.10.0
       gatsby-page-utils: 3.10.0
       gatsby-plugin-utils: 4.10.0(gatsby@5.10.0)(graphql@16.6.0)
@@ -5693,7 +5697,7 @@ packages:
       postcss: ^8.0.5
     dependencies:
       '@babel/runtime': 7.22.3
-      gatsby: 5.10.0(babel-eslint@10.1.0)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.5)
+      gatsby: 5.10.0(babel-eslint@10.1.0)(react-dom@18.2.0)(react@18.2.0)(type-fest@4.0.0)(typescript@4.9.5)
       postcss: 8.4.24
       postcss-loader: 7.3.2(postcss@8.4.24)(webpack@5.84.1)
     transitivePeerDependencies:
@@ -5712,7 +5716,7 @@ packages:
       debug: 4.3.4
       filenamify: 4.3.0
       fs-extra: 11.1.1
-      gatsby: 5.10.0(babel-eslint@10.1.0)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.5)
+      gatsby: 5.10.0(babel-eslint@10.1.0)(react-dom@18.2.0)(react@18.2.0)(type-fest@4.0.0)(typescript@4.9.5)
       gatsby-core-utils: 4.10.0
       gatsby-plugin-utils: 4.10.0(gatsby@5.10.0)(graphql@16.6.0)
       lodash: 4.17.21
@@ -5729,7 +5733,7 @@ packages:
     peerDependencies:
       gatsby: ~2.x.x || ~3.x.x || ~4.x.x || ~5.x.x
     dependencies:
-      gatsby: 5.10.0(babel-eslint@10.1.0)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.5)
+      gatsby: 5.10.0(babel-eslint@10.1.0)(react-dom@18.2.0)(react@18.2.0)(type-fest@4.0.0)(typescript@4.9.5)
       lodash: 4.17.21
       tsconfig-paths-webpack-plugin: 3.5.2
     dev: true
@@ -5747,7 +5751,7 @@ packages:
       '@babel/preset-typescript': 7.21.5(@babel/core@7.22.1)
       '@babel/runtime': 7.22.3
       babel-plugin-remove-graphql-queries: 5.10.0(@babel/core@7.22.1)(gatsby@5.10.0)
-      gatsby: 5.10.0(babel-eslint@10.1.0)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.5)
+      gatsby: 5.10.0(babel-eslint@10.1.0)(react-dom@18.2.0)(react@18.2.0)(type-fest@4.0.0)(typescript@4.9.5)
     transitivePeerDependencies:
       - supports-color
 
@@ -5761,7 +5765,7 @@ packages:
       '@babel/runtime': 7.22.3
       fastq: 1.15.0
       fs-extra: 11.1.1
-      gatsby: 5.10.0(babel-eslint@10.1.0)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.5)
+      gatsby: 5.10.0(babel-eslint@10.1.0)(react-dom@18.2.0)(react@18.2.0)(type-fest@4.0.0)(typescript@4.9.5)
       gatsby-core-utils: 4.10.0
       gatsby-sharp: 1.10.0
       graphql: 16.6.0
@@ -5812,7 +5816,7 @@ packages:
       chokidar: 3.5.3
       file-type: 16.5.4
       fs-extra: 11.1.1
-      gatsby: 5.10.0(babel-eslint@10.1.0)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.5)
+      gatsby: 5.10.0(babel-eslint@10.1.0)(react-dom@18.2.0)(react@18.2.0)(type-fest@4.0.0)(typescript@4.9.5)
       gatsby-core-utils: 4.10.0
       mime: 3.0.0
       pretty-bytes: 5.6.0
@@ -5848,7 +5852,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.22.3
       bluebird: 3.7.2
-      gatsby: 5.10.0(babel-eslint@10.1.0)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.5)
+      gatsby: 5.10.0(babel-eslint@10.1.0)(react-dom@18.2.0)(react@18.2.0)(type-fest@4.0.0)(typescript@4.9.5)
     dev: false
 
   /gatsby-transformer-sharp@5.10.0(gatsby-plugin-sharp@5.10.0)(gatsby@5.10.0)(graphql@16.6.0):
@@ -5862,7 +5866,7 @@ packages:
       bluebird: 3.7.2
       common-tags: 1.8.2
       fs-extra: 11.1.1
-      gatsby: 5.10.0(babel-eslint@10.1.0)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.5)
+      gatsby: 5.10.0(babel-eslint@10.1.0)(react-dom@18.2.0)(react@18.2.0)(type-fest@4.0.0)(typescript@4.9.5)
       gatsby-plugin-sharp: 5.10.0(gatsby@5.10.0)(graphql@16.6.0)
       gatsby-plugin-utils: 4.10.0(gatsby@5.10.0)(graphql@16.6.0)
       probe-image-size: 7.2.3
@@ -5884,7 +5888,7 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /gatsby@5.10.0(babel-eslint@10.1.0)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.5):
+  /gatsby@5.10.0(babel-eslint@10.1.0)(react-dom@18.2.0)(react@18.2.0)(type-fest@4.0.0)(typescript@4.9.5):
     resolution: {integrity: sha512-/CsCBskAzrit4olmzzN58v6ayvUYUwVRwQVxkHTDb8b9bGRy0VBG9Ntsq/IvGtEYRvYd6VrWpj/U0Xfcf+pnDg==}
     engines: {node: '>=18.0.0'}
     hasBin: true
@@ -5915,7 +5919,7 @@ packages:
       '@nodelib/fs.walk': 1.2.8
       '@parcel/cache': 2.8.3(@parcel/core@2.8.3)
       '@parcel/core': 2.8.3
-      '@pmmmwh/react-refresh-webpack-plugin': 0.5.10(react-refresh@0.14.0)(webpack@5.84.1)
+      '@pmmmwh/react-refresh-webpack-plugin': 0.5.10(react-refresh@0.14.0)(type-fest@4.0.0)(webpack@5.84.1)
       '@types/http-proxy': 1.17.11
       '@typescript-eslint/eslint-plugin': 5.59.7(@typescript-eslint/parser@5.59.7)(eslint@7.32.0)(typescript@4.9.5)
       '@typescript-eslint/parser': 5.59.7(eslint@7.32.0)(typescript@4.9.5)
@@ -7550,7 +7554,7 @@ packages:
       levn: 0.4.1
       prelude-ls: 1.2.1
       type-check: 0.4.0
-      word-wrap: 1.2.3
+      word-wrap: 1.2.4
 
   /ordered-binary@1.4.0:
     resolution: {integrity: sha512-EHQ/jk4/a9hLupIKxTfUsQRej1Yd/0QLQs3vGvIqg5ZtCYSzNhkzHoZc7Zf4e4kUlDaC3Uw8Q/1opOLNN2OKRQ==}
@@ -9438,6 +9442,10 @@ packages:
     resolution: {integrity: sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==}
     engines: {node: '>=8'}
 
+  /type-fest@4.0.0:
+    resolution: {integrity: sha512-d/oYtUnPM9zar2fqqGLYPzgcY0qUlYK0evgNVti93xpzfjGkMgZHu9Lvgrkn0rqGXTgsFRxFamzjGoD9Uo+dgw==}
+    engines: {node: '>=16'}
+
   /type-is@1.6.18:
     resolution: {integrity: sha512-TkRKr9sUTxEH8MdfuCSP7VizJyzRNMjj2J2do2Jr3Kym598JVdEksuzPQCnlFPW4ky9Q+iA+ma9BGm06XQBy8g==}
     engines: {node: '>= 0.6'}
@@ -9757,8 +9765,8 @@ packages:
   /wildcard@2.0.1:
     resolution: {integrity: sha512-CC1bOL87PIWSBhDcTrdeLo6eGT7mCFtrg0uIJtqJUFyK+eJnzl8A1niH56uu7KMa5XFrtiV+AQuHO3n7DsHnLQ==}
 
-  /word-wrap@1.2.3:
-    resolution: {integrity: sha512-Hz/mrNwitNRh/HUAtM/VT/5VH+ygD6DV7mYKZAtHOrbs8U7lvPS6xf7EJKMF0uW1KJCl0H701g3ZGus+muE5vQ==}
+  /word-wrap@1.2.4:
+    resolution: {integrity: sha512-2V81OA4ugVo5pRo46hAoD2ivUJx8jXmWXfUkY4KFNw0hEptvN0QfH3K4nHiwzGeKl5rFKedV48QVoqYavy4YpA==}
     engines: {node: '>=0.10.0'}
 
   /wrap-ansi@6.2.0:
