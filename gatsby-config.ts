@@ -24,7 +24,22 @@ const config: GatsbyConfig = {
         {
             resolve: 'gatsby-source-filesystem',
             options: {
+                path: './src/data/posts/'
+            }
+        },
+        {
+            resolve: 'gatsby-source-filesystem',
+            options: {
                 path: './src/data/'
+            }
+        },
+        {
+            resolve: 'gatsby-transformer-remark',
+            options: {
+                plugins: [
+                    'gatsby-remark-prismjs'
+                ],
+                excerpt_separator: '<!--more-->'
             }
         }
     ]
