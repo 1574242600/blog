@@ -18,6 +18,7 @@
     },
     "dependencies": {
         "gatsby": "^5.10.0",
+        "gatsby-awesome-pagination": "^0.3.8",
         "gatsby-plugin-image": "^3.10.0",
         "gatsby-plugin-sharp": "^5.10.0",
         "gatsby-remark-prismjs": "github:1574242600/gatsby-remark-prismjs",
