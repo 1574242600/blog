@@ -61,6 +61,7 @@ pre[class*="language-"].line-numbers>code {
     background-color: #646464;
     color: #bbbbbb;
     padding: 2px 6px 2px 8px;
+    pointer-events: none;
 }
 
 /** gatsby-highlight **/
