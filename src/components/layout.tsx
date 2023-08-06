@@ -41,7 +41,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                         <Footer siteMetadata={siteMetadata} />
                     </div>
                 </Sidebar>
-                <div className='lg:ml-64 h-full overflow-auto'>{children}</div>
+                <div id='body' className='lg:ml-64 h-full overflow-auto'>{children}</div>
             </div>
         </div>
     )
