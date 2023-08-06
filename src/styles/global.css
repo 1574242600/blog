@@ -6,3 +6,13 @@ svg {
     width: 1em;
     height: 1em;
 }
+
+/* todo */
+[data-theme="default"] {
+    --primary-color: #51b26d;
+    --background-color: #e0e0e0;
+    --text-color: #555;
+    --accent-background-color: #eeeeee;
+    --accent-text-color: #212121;
+    --divider-color: #bdbdbd80;
+}

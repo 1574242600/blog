@@ -40,7 +40,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children, defaultOpenOnMobile = false
 
     const lgClass = ' lg:absolute lg:!left-auto'
     const lgMClass = ' lg-m:fixed lg-m:z-10'
-    // todo 电脑端样式
+
     return (
         <div>
             <div
@@ -57,6 +57,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children, defaultOpenOnMobile = false
             <div
                 className='lg:hidden fixed h-full w-full bg-black'
                 style={{
+                    zIndex: xOffset !== -256 ? 1 : -1,
                     opacity: (Math.abs(xOffset + 256) / 512).toFixed(2)
                 }}
             ></div>

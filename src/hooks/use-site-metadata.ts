@@ -10,6 +10,7 @@ export const useSiteMetadata = (): SiteMetadata => {
                         author
                         siteUrl
                         since
+                        description
                         contacts {
                             name
                             id
@@ -33,6 +34,7 @@ export interface SiteMetadata {
     author: string
     siteUrl: string
     since: string
+    description: string
     contacts: Array<{
         name: string
         id: string

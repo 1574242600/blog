@@ -8,6 +8,9 @@ dependencies:
   gatsby:
     specifier: ^5.10.0
     version: 5.10.0(babel-eslint@10.1.0)(react-dom@18.2.0)(react@18.2.0)(type-fest@4.0.0)(typescript@4.9.5)
+  gatsby-awesome-pagination:
+    specifier: ^0.3.8
+    version: 0.3.8(gatsby@5.10.0)(react@18.2.0)
   gatsby-plugin-image:
     specifier: ^3.10.0
     version: 3.10.0(@babel/core@7.22.1)(gatsby-plugin-sharp@5.10.0)(gatsby-source-filesystem@5.10.0)(gatsby@5.10.0)(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0)
@@ -5598,6 +5601,17 @@ packages:
 
   /functions-have-names@1.2.3:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
+
+  /gatsby-awesome-pagination@0.3.8(gatsby@5.10.0)(react@18.2.0):
+    resolution: {integrity: sha512-Bnf2rncqjyhQeye8w+OVK8wmgu/Y77HI8Po05oEqbCSd+fMd0uGDv6ZhKH7UU/xcTv2cbJm7ie+Px9t41ngAxg==}
+    peerDependencies:
+      gatsby: '>=2.0.0'
+      react: '>=16.0.0'
+    dependencies:
+      gatsby: 5.10.0(babel-eslint@10.1.0)(react-dom@18.2.0)(react@18.2.0)(type-fest@4.0.0)(typescript@4.9.5)
+      lodash: 4.17.21
+      react: 18.2.0
+    dev: false
 
   /gatsby-cli@5.10.0:
     resolution: {integrity: sha512-k8Z5l+2pAzf09/w1YgODAExjJKnZCd8WON6pxsHV1nht9I+zXE3sqB5FbsitckufaHhoOer6ezsQjxLVAe4+mA==}

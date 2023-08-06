@@ -18,7 +18,7 @@ const Contacts: React.FC<ContactsProps> = ({ contacts }) => {
 
 const Contact: React.FC<LastArrayElement<ContactsProps['contacts']>> = ({ name, id, url }) => {
     const href = url.replace(/\{id\}/, id)
-    const svgClass = 'text-2xl text-gray-600 hover:text-blue-400'
+    const svgClass = 'text-2xl text-gray-600 hover:text-sky-400'
 
     return (
         <div title={name}>

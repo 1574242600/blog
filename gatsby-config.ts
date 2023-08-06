@@ -6,6 +6,7 @@ const config: GatsbyConfig = {
         author: 'Nworm',
         siteUrl: 'https://nworm.icu',
         since: '2019-06-21T11:30:00.000Z',
+        description: '一条咸鱼',
         contacts: [
             { name: 'email', id: 'admin@nworm.icu', url: 'mailto:{id}' },
             { name: 'github', id: '1574242600', url: '//github.com/{id}' },
