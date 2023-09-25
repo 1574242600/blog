@@ -13,7 +13,7 @@ const PostItem: React.FC<PostItemProps> = ({ data }) => {
             <div className={'p-6 bg-gray-100 shadow ' + widthClass}>
                 <PostHeader data={data} />
                 <Divider />
-                <div className='heti pl-8 pt-4' dangerouslySetInnerHTML={{ __html: excerpt }} />
+                <div className='heti ml-auto pt-4 pl-2 !max-w-2xl' dangerouslySetInnerHTML={{ __html: excerpt }} />
                 <Divider />
                 <Link
                     className='block text-center mt-4'
