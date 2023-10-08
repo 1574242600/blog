@@ -38,12 +38,13 @@ const IndexPage: React.FC<PageProps<IndexPageData, IndexPageContext>> = ({ data,
 
 export default IndexPage
 
-export const Head: HeadFC = () => {
+export const Head: HeadFC<{}, IndexPageContext> = (props_) => {
     const { title, description } = useSiteMetadata()
+    const { humanPageNumber } = props_.pageContext
 
     return (
         <>
-            <title>{title}</title>
+            <title>{title}{humanPageNumber > 1 && ` | 第${humanPageNumber}页`}</title>
             <meta name="description" content={description} />
         </>
     )
