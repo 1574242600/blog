@@ -1,6 +1,7 @@
 import * as React from 'react'
 import type { HeadFC, PageProps } from 'gatsby'
 import { graphql, navigate } from 'gatsby'
+import { DeepNonNullable } from 'ts-essentials'
 import { useSiteMetadata } from '@hooks/use-site-metadata'
 import PostItem from '@components/postItem'
 import { Pagination } from '@components/pagination'
@@ -83,22 +84,4 @@ export interface IndexPageContext {
     nextPagePath: string
 }
 
-export interface IndexPageData {
-    allMarkdownRemark: {
-        edges: Array<{
-            node: {
-                timeToRead: number
-                excerpt: string
-                frontmatter: {
-                    update?: string
-                    title: string
-                    tags?: string[]
-                    date: string
-                }
-                fields: {
-                    slug: string
-                }
-            }
-        }>
-    }
-}
+export type IndexPageData = DeepNonNullable<Queries.IndexQueryQuery>

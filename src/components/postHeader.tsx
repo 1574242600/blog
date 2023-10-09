@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
+import { DeepReadonly } from 'ts-essentials'
 
-const PostHeader: React.FC<PostHeaderProps> = ({ data }) => {
+const PostHeader: React.FC<DeepReadonly<PostHeaderProps>> = ({ data }) => {
     const {
         timeToRead,
         frontmatter
@@ -30,7 +31,7 @@ function dateToString (time: Date): string {
     return `${y}-${m}-${d}`
 }
 
-function renderTagLinks (tags: string[]): React.ReactNode {
+function renderTagLinks (tags: readonly string[]): React.ReactNode {
     return tags.map(
         (tag, index) => (
             <React.Fragment key={ tag }>

@@ -1,4 +1,5 @@
 import { useStaticQuery, graphql } from 'gatsby'
+import { DeepNonNullable } from 'ts-essentials'
 
 export const useSiteMetadata = (): SiteMetadata => {
     const { site } = useStaticQuery(
@@ -29,19 +30,4 @@ export const useSiteMetadata = (): SiteMetadata => {
     return site.siteMetadata
 }
 
-export interface SiteMetadata {
-    title: string
-    author: string
-    siteUrl: string
-    since: string
-    description: string
-    contacts: Array<{
-        name: string
-        id: string
-        url: string
-    }>
-    comment: Array<{
-        type: string
-        id: string
-    }>
-}
+export type SiteMetadata = DeepNonNullable<Queries.SiteMetaDataQuery>['site']['siteMetadata']
