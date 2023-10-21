@@ -17,6 +17,7 @@
         "lint:fix": "eslint . --fix"
     },
     "dependencies": {
+        "disqus-react": "^1.1.5",
         "gatsby": "^5.10.0",
         "gatsby-awesome-pagination": "^0.3.8",
         "gatsby-plugin-image": "^3.10.0",

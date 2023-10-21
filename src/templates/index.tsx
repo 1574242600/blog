@@ -13,7 +13,11 @@ const IndexPage: React.FC<PageProps<IndexPageData, IndexPageContext>> = ({ data,
             <div className='mt-8 space-y-8'>
                 {
                     edges.map(({ node }) => {
-                        return <PostItem key={node.fields.slug} data={node} />
+                        return (
+                            <div key={node.fields.slug} className='w-full flex flex-row justify-center'>
+                                <PostItem data={node} />
+                            </div>
+                        )
                     })
                 }
             </div>
