@@ -1,13 +1,13 @@
 import * as React from 'react'
 
-const Box: React.FC<BoxProps> = ({ className, children }) => {
+const Box: React.FC<BoxProps> = ({ className = '', children }) => {
     return (
         <div className={'bg-gray-100 shadow ' + className}>{children}</div>
     )
 }
 
 export interface BoxProps {
-    className: string
+    className?: string
     children: React.ReactNode
 }
 

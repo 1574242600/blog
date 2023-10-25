@@ -7,7 +7,7 @@ import Box from './box'
 
 const PostItem: React.FC<DeepReadonly<PostItemProps>> = ({ data }) => {
     const { fields, excerpt } = data
-    const widthClass = ' xl:w-3xl lg:w-2xl md:w-xl w-xl'
+    const widthClass = ' xl:w-3xl lg:w-2xl md:w-xl w-full'
     const buttonClass = 'inline-block w-18 h-8 p-2 text-sm font-bold font-mono shadow text-gray-100 bg-sky-400 hover:bg-sky-500'
 
     return (

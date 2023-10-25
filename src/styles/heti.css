@@ -204,7 +204,8 @@
     word-wrap: break-word;
     -webkit-hyphens: auto;
     hyphens: auto;
-    letter-spacing: .02em
+    letter-spacing: .02em;
+    color: #333;
 }
 
 .heti::before,
@@ -238,7 +239,7 @@
     padding-block-end: 12px;
     padding-inline-start: 16px;
     padding-inline-end: 16px;
-    
+
     border-radius: 4px;
     border-left: 6px solid rgb(56 189 248);
     background-color: rgba(16, 152, 173, 0.200);
@@ -427,7 +428,7 @@
 }
 
 [data-theme="dark"] .heti table {
-        border-color: #404040
+    border-color: #404040
 }
 
 .heti th,
@@ -438,10 +439,11 @@
     padding-inline-end: 8px;
     border-width: 1px;
     border-style: solid;
-    border-color: #ccc
+    border-color: #aaa;
 }
 
-[data-theme="dark"] .heti th, .heti td {
+[data-theme="dark"] .heti th,
+[data-theme="dark"] .heti td {
     border-color: #404040
 }
 
@@ -571,7 +573,8 @@
     background-color: #dbedff
 }
 
-[data-theme="dark"] .heti sup:target, .heti sup a:target {
+[data-theme="dark"] .heti sup:target,
+.heti sup a:target {
     background-color: #3a6188
 }
 
@@ -1028,4 +1031,8 @@
 
 .heti .heti-adjacent-quarter {
     margin-inline-end: -0.25em
+}
+
+.heti img {
+    margin: auto;
 }

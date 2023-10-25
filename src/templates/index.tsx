@@ -61,6 +61,7 @@ query IndexQuery($skip: Int!, $limit: Int!) {
       skip: $skip
       limit: $limit
       sort: {frontmatter: {date: DESC}}
+      filter: {fileAbsolutePath: {regex: "/(?<!about)\\.md$/"}}
     ) {
         edges {
             node {
