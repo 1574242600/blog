@@ -1,6 +1,7 @@
 import { useStaticQuery, graphql } from 'gatsby'
+import { DeepNonNullable } from 'ts-essentials'
 
-export const useMenuItemsData = (): MenuItemData[] => {
+export const useMenuItemsData = (): MenuItemData => {
     const { allMenuJson: { nodes } } = useStaticQuery(
         graphql`
             query MenuItemsData {
@@ -18,8 +19,4 @@ export const useMenuItemsData = (): MenuItemData[] => {
     return nodes
 }
 
-export interface MenuItemData {
-    name: string
-    path: string
-    svgId: string
-}
+export type MenuItemData = DeepNonNullable<Queries.MenuItemsDataQuery>['allMenuJson']['nodes']

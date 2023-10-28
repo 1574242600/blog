@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
+import { DeepReadonly } from 'ts-essentials'
 
-const PostHeader: React.FC<PostHeaderProps> = ({ data }) => {
+const PostHeader: React.FC<DeepReadonly<PostHeaderProps>> = ({ data }) => {
     const {
         timeToRead,
         frontmatter
@@ -12,7 +13,7 @@ const PostHeader: React.FC<PostHeaderProps> = ({ data }) => {
 
     return (
         <div className='mb-4'>
-            <div className='text-3xl font-bold font-mono text-center text-gray-700'>{data.frontmatter.title}</div>
+            <div className='text-2xl font-bold font-mono text-center text-gray-600'>{data.frontmatter.title}</div>
             <div className='mt-2 text-xs text-center font-bold space-x-2 text-gray-500'>
                 <span>发表于: {dateStr}</span> <span>|</span>
                 <span>更新于: {updateStr}</span> <span>|</span>
@@ -30,7 +31,7 @@ function dateToString (time: Date): string {
     return `${y}-${m}-${d}`
 }
 
-function renderTagLinks (tags: string[]): React.ReactNode {
+function renderTagLinks (tags: readonly string[]): React.ReactNode {
     return tags.map(
         (tag, index) => (
             <React.Fragment key={ tag }>

@@ -47,7 +47,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     )
 }
 
-const renderItems = (menu: MenuItemData[]): Array<ReturnType<typeof Item>> => {
+const renderItems = (menu: MenuItemData): Array<ReturnType<typeof Item>> => {
     return menu.map(({ name, path, svgId }) => {
         return (
             <Item key={path}>

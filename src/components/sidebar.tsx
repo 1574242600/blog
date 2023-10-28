@@ -9,11 +9,12 @@ const Sidebar: React.FC<SidebarProps> = ({ children, defaultOpenOnMobile = false
     useSwipe(
         {
             onSwipe: event => {
-                if (event.direction === 4 || event.direction === 6) {
-                    let offset =
-                        ((event.offset.x / 40) ** 2) *
-                        (event.direction === 4 ? -1 : 1) +
-                        xOffset
+                const { firstDirection } = event
+                if (firstDirection === 4 || firstDirection === 6) {
+                    if (firstDirection === 4 && xOffset === -256) return
+                    if (firstDirection === 6 && xOffset === 0) return
+
+                    let offset = event.offset.cX - (firstDirection === 6 ? 256 : 0)
                     if (offset > 0) offset = 0
                     if (offset < -256) offset = -256
 
@@ -29,8 +30,8 @@ const Sidebar: React.FC<SidebarProps> = ({ children, defaultOpenOnMobile = false
             }
         },
         {
-            timeDiff: 50,
-            throttleDelay: 25
+            timeDiff: 10,
+            throttleDelay: 20
         }
     )
 
@@ -40,6 +41,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children, defaultOpenOnMobile = false
 
     const lgClass = ' lg:absolute lg:!left-auto'
     const lgMClass = ' lg-m:fixed lg-m:z-10'
+    const transition = (xOffset === 0 || xOffset === -256) ? 'all 0.5s' : ''
 
     return (
         <div>
@@ -48,7 +50,8 @@ const Sidebar: React.FC<SidebarProps> = ({ children, defaultOpenOnMobile = false
                     'h-full w-64' + lgClass + lgMClass + ' bg-gray-100 shadow'
                 }
                 style={{
-                    left: xOffset
+                    left: xOffset,
+                    transition
                 }}
             >
                 {children}
@@ -58,7 +61,8 @@ const Sidebar: React.FC<SidebarProps> = ({ children, defaultOpenOnMobile = false
                 className='lg:hidden fixed h-full w-full bg-black'
                 style={{
                     zIndex: xOffset !== -256 ? 1 : -1,
-                    opacity: (Math.abs(xOffset + 256) / 512).toFixed(2)
+                    opacity: (Math.abs(xOffset + 256) / 512).toFixed(2),
+                    transition
                 }}
             ></div>
         </div>

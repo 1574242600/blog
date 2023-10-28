@@ -38,6 +38,12 @@ const config: GatsbyConfig = {
             resolve: 'gatsby-transformer-remark',
             options: {
                 plugins: [
+                    {
+                        resolve: 'gatsby-remark-autolink-headers',
+                        options: {
+                            offsetY: 0
+                        }
+                    },
                     'gatsby-remark-prismjs'
                 ],
                 excerpt_separator: '<!--more-->'

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { throttle } from 'throttle-debounce'
 
 export const useSwipe = (
@@ -7,30 +7,46 @@ export const useSwipe = (
 ): void => {
     const { onSwipeStart, onSwipeEnd, onSwipe } = handlers
 
-    const [isSwipeStart, setIsSwipeStart] = useState(false)
-    const [isSwipeEnd, setIsSwipeEnd] = useState(false)
-    const [XYT, setXYT] = useState<XYT>({
-        x: 0,
-        y: 0,
-        time: 0
+    const [swipeState, _] = useState<SwipeState>({
+        isSwipeEnd: false,
+        isSwipeStart: false,
+        firstDirection: null,
+        XYT: {
+            pX: 0,
+            pY: 0,
+            cX: 0,
+            cY: 0,
+            time: 0
+        },
+        startXYT: {
+            pX: 0,
+            pY: 0,
+            cX: 0,
+            cY: 0,
+            time: 0
+        },
+        lastXYT: null
     })
-    const [startXYT, setStartXYT] = useState<XYT>({
-        x: 0,
-        y: 0,
-        time: 0
-    })
-    const [lastXYT, setLastXYT] = useState<XYT | null>(null)
+
+    const setSwipeState = (lastSwipeState: Partial<SwipeState>): void => {
+        _((swipeState) => {
+            // console.log('<---------------------------------')
+            // console.log(lastSwipeState)
+            // console.log(swipeState)
+            // console.log('--------------------------------->')
+            return Object.assign({}, swipeState, lastSwipeState)
+        })
+    }
 
     useEffect(() => {
         const hanleTouchStartBinded = hanleTouchStart.bind(
             null,
-            setStartXYT,
-            setXYT
+            setSwipeState
         )
-        const hanleTouchEndBinded = hanleTouchEnd.bind(null, setIsSwipeEnd)
+        const hanleTouchEndBinded = hanleTouchEnd.bind(null, _)
         const hanleTouchMoveBinded = throttle(
             settings.throttleDelay,
-            hanleTouchMove.bind(null, setXYT)
+            hanleTouchMove.bind(null, setSwipeState)
         )
 
         addEventListener('touchstart', hanleTouchStartBinded)
@@ -45,74 +61,105 @@ export const useSwipe = (
     }, [])
 
     useEffect(() => {
+        const { XYT, startXYT, lastXYT, isSwipeStart, firstDirection } = swipeState
         const timeDiff = XYT.time - startXYT.time
-        const swipeEvnet = toSwipeEvent(XYT, startXYT)
+        const swipeEvnet = toSwipeEvent(XYT, startXYT, firstDirection)
 
         if (timeDiff > settings.timeDiff || lastXYT != null) {
             if (!isSwipeStart) {
-                if (Math.abs(swipeEvnet.offset.x) > 30 || Math.abs(swipeEvnet.offset.y) > 30) setIsSwipeStart(true)
+                if (Math.abs(swipeEvnet.offset.cX) > 20 || Math.abs(swipeEvnet.offset.cY) > 20) setSwipeState({ isSwipeStart: true })
                 return
             }
 
+            /*
             if (lastXYT != null) { // 中途滑动方向改变判断
                 const lastSwipeEvnet = toSwipeEvent(lastXYT, startXYT)
-                if (lastSwipeEvnet.direction === 4) swipeEvnet.offset.x - lastSwipeEvnet.offset.x > 0 && setStartXYT(XYT)
-                if (lastSwipeEvnet.direction === 6) swipeEvnet.offset.x - lastSwipeEvnet.offset.x < 0 && setStartXYT(XYT)
-                if (lastSwipeEvnet.direction === 8) swipeEvnet.offset.y - lastSwipeEvnet.offset.y < 0 && setStartXYT(XYT)
-                if (lastSwipeEvnet.direction === 2) swipeEvnet.offset.y - lastSwipeEvnet.offset.y > 0 && setStartXYT(XYT)
-            }
+                if (lastSwipeEvnet.direction === 4) swipeEvnet.offset.cX - lastSwipeEvnet.offset.cX > 0 && setStartXYT(XYT)
+                if (lastSwipeEvnet.direction === 6) swipeEvnet.offset.cX - lastSwipeEvnet.offset.cX < 0 && setStartXYT(XYT)
+                if (lastSwipeEvnet.direction === 8) swipeEvnet.offset.cY - lastSwipeEvnet.offset.cY < 0 && setStartXYT(XYT)
+                if (lastSwipeEvnet.direction === 2) swipeEvnet.offset.cY - lastSwipeEvnet.offset.cY > 0 && setStartXYT(XYT)
+            } */
 
-            onSwipe?.(toSwipeEvent(XYT, startXYT))
-            setLastXYT(XYT)
+            onSwipe?.(toSwipeEvent(XYT, startXYT, firstDirection))
+            setSwipeState({
+                lastXYT: XYT
+            })
         }
-    }, [XYT])
+    }, [swipeState.XYT])
 
     useEffect(() => {
-        onSwipeStart?.(toSwipeEvent(XYT, startXYT))
-    }, [isSwipeStart])
+        if (!swipeState.isSwipeStart) return
+
+        const { XYT, startXYT } = swipeState
+        const event = toSwipeEvent(XYT, startXYT, null)
+
+        setSwipeState({
+            firstDirection: event.direction
+        })
+
+        onSwipeStart?.(event)
+    }, [swipeState.isSwipeStart])
 
     useEffect(() => {
-        if (!isSwipeStart) return
+        if (!swipeState.isSwipeStart) return
 
-        onSwipeEnd?.(toSwipeEvent(XYT, startXYT))
-        setIsSwipeEnd(false)
-        setIsSwipeStart(false)
-        setLastXYT(null)
-    }, [isSwipeEnd])
+        const { XYT, startXYT, firstDirection } = swipeState
+
+        setTimeout(() => {
+            setSwipeState({
+                isSwipeStart: false,
+                isSwipeEnd: false,
+                lastXYT: null,
+                firstDirection: null
+            })
+
+            onSwipeEnd?.(toSwipeEvent(XYT, startXYT, firstDirection))
+        }, 100)
+    }, [swipeState.isSwipeEnd])
 }
 
 function hanleTouchStart (
-    setStartXYT: React.Dispatch<React.SetStateAction<XYT>>,
-    setXYT: React.Dispatch<React.SetStateAction<XYT>>,
+    setSwipeState: (lastSwipeState: Partial<SwipeState>) => void,
     event: TouchEvent
 ): void {
     const tmp = toXYT(event)
-    setStartXYT(tmp)
-    setXYT(tmp)
+    setSwipeState({
+        startXYT: tmp,
+        XYT: tmp
+    })
 }
 
 function hanleTouchEnd (
-    setIsSwipeEnd: React.Dispatch<React.SetStateAction<boolean>>
+    setSwipeState: Dispatch<SetStateAction<SwipeState>>
 ): void {
-    setIsSwipeEnd(true)
+    setSwipeState((swipeState) => {
+        return {
+            ...swipeState,
+            isSwipeEnd: swipeState.isSwipeStart
+        }
+    })
 }
 
 function hanleTouchMove (
-    setXYT: React.Dispatch<React.SetStateAction<XYT>>,
+    setSwipeState: (lastSwipeState: Partial<SwipeState>) => void,
     event: TouchEvent
 ): void {
-    setXYT(toXYT(event))
+    setSwipeState({
+        XYT: toXYT(event)
+    })
 }
 
 function toXYT (event: TouchEvent): XYT {
     return {
-        x: event.touches[0].pageX,
-        y: event.touches[0].pageY,
+        pX: event.touches[0].pageX,
+        pY: event.touches[0].pageY,
+        cX: event.touches[0].clientX,
+        cY: event.touches[0].clientY,
         time: new Date().getTime()
     }
 }
 
-function toSwipeEvent (XYT: XYT, startXYT: XYT): SwipeEvnet {
+function toSwipeEvent (XYT: XYT, startXYT: XYT, firstDirection: SwipeDirection): SwipeEvnet {
     function getDirection (
         xOffest: number,
         yOffest: number
@@ -125,23 +172,39 @@ function toSwipeEvent (XYT: XYT, startXYT: XYT): SwipeEvnet {
         return null
     }
 
-    const xOffest = XYT.x - startXYT.x
-    const yOffest = XYT.y - startXYT.y
+    const pXOffest = XYT.pX - startXYT.pX
+    const pYOffest = XYT.pY - startXYT.pY
+    const cXOffest = XYT.cX - startXYT.cX
+    const cYOffest = XYT.cY - startXYT.cY
 
     return {
-        direction: getDirection(xOffest, yOffest),
+        firstDirection,
+        direction: getDirection(pXOffest, pYOffest),
         offset: {
-            x: xOffest,
-            y: yOffest
+            pX: pXOffest,
+            pY: pYOffest,
+            cX: cXOffest,
+            cY: cYOffest
         },
         XYT,
         startXYT
     }
 }
 
+interface SwipeState {
+    isSwipeStart: boolean
+    isSwipeEnd: boolean
+    firstDirection: SwipeDirection
+    XYT: XYT
+    startXYT: XYT
+    lastXYT: XYT | null
+}
+
 interface XYT {
-    x: number
-    y: number
+    pX: number
+    pY: number
+    cX: number
+    cY: number
     time: number
 }
 
@@ -157,11 +220,11 @@ export interface SwipeSettings {
 }
 
 export interface SwipeEvnet {
-    direction: 4 | 8 | 6 | 2 | null // number pad
-    offset: {
-        x: number
-        y: number
-    }
+    firstDirection: SwipeDirection
+    direction: SwipeDirection
+    offset: Omit<XYT, 'time'>
     XYT: XYT
     startXYT: XYT
 }
+
+export type SwipeDirection = 4 | 8 | 6 | 2 | null // number pad

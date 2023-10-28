@@ -1,6 +1,7 @@
 import * as React from 'react'
 import type { HeadFC, PageProps } from 'gatsby'
 import { graphql, navigate } from 'gatsby'
+import { DeepNonNullable } from 'ts-essentials'
 import { useSiteMetadata } from '@hooks/use-site-metadata'
 import PostItem from '@components/postItem'
 import { Pagination } from '@components/pagination'
@@ -12,7 +13,11 @@ const IndexPage: React.FC<PageProps<IndexPageData, IndexPageContext>> = ({ data,
             <div className='mt-8 space-y-8'>
                 {
                     edges.map(({ node }) => {
-                        return <PostItem key={node.fields.slug} data={node} />
+                        return (
+                            <div key={node.fields.slug} className='w-full flex flex-row justify-center'>
+                                <PostItem data={node} />
+                            </div>
+                        )
                     })
                 }
             </div>
@@ -38,12 +43,13 @@ const IndexPage: React.FC<PageProps<IndexPageData, IndexPageContext>> = ({ data,
 
 export default IndexPage
 
-export const Head: HeadFC = () => {
+export const Head: HeadFC<{}, IndexPageContext> = (props_) => {
     const { title, description } = useSiteMetadata()
+    const { humanPageNumber } = props_.pageContext
 
     return (
         <>
-            <title>{title}</title>
+            <title>{title}{humanPageNumber > 1 && ` | 第${humanPageNumber}页`}</title>
             <meta name="description" content={description} />
         </>
     )
@@ -55,6 +61,7 @@ query IndexQuery($skip: Int!, $limit: Int!) {
       skip: $skip
       limit: $limit
       sort: {frontmatter: {date: DESC}}
+      filter: {fileAbsolutePath: {regex: "/(?<!about)\\.md$/"}}
     ) {
         edges {
             node {
@@ -82,22 +89,4 @@ export interface IndexPageContext {
     nextPagePath: string
 }
 
-export interface IndexPageData {
-    allMarkdownRemark: {
-        edges: Array<{
-            node: {
-                timeToRead: number
-                excerpt: string
-                frontmatter: {
-                    update?: string
-                    title: string
-                    tags?: string[]
-                    date: string
-                }
-                fields: {
-                    slug: string
-                }
-            }
-        }>
-    }
-}
+export type IndexPageData = DeepNonNullable<Queries.IndexQueryQuery>
