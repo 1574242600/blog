@@ -64,6 +64,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children, defaultOpenOnMobile = false
                     opacity: (Math.abs(xOffset + 256) / 512).toFixed(2),
                     transition
                 }}
+                onClick={() => setXOffset(-256)}
             ></div>
         </div>
     )
