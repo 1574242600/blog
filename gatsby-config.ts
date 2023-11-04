@@ -39,10 +39,7 @@ const config: GatsbyConfig = {
             options: {
                 plugins: [
                     {
-                        resolve: 'gatsby-remark-autolink-headers',
-                        options: {
-                            offsetY: 0
-                        }
+                        resolve: 'gatsby-remark-autolink-headers'
                     },
                     'gatsby-remark-prismjs'
                 ],
