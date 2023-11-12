@@ -14,7 +14,7 @@ const PostItem: React.FC<DeepReadonly<PostItemProps>> = ({ data }) => {
         <Box className={'p-6 ' + widthClass}>
             <PostHeader data={data} />
             <Divider />
-            <div className='heti ml-auto pt-4 pl-2 !max-w-2xl' dangerouslySetInnerHTML={{ __html: excerpt }} />
+            <div className='heti m-auto pt-4 pl-2 !max-w-2xl' dangerouslySetInnerHTML={{ __html: excerpt }} />
             <Divider />
             <Link
                 className='block text-center mt-4'

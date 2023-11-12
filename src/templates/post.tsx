@@ -23,7 +23,7 @@ const PostPage: React.FC<PageProps<PostPageData>> = ({ data }) => {
                         <div className='p-6'>
                             <PostHeader data={data.markdownRemark} />
                             <Divider />
-                            <div className='heti ml-auto pt-4 !max-w-2xl' dangerouslySetInnerHTML={{ __html: html }} />
+                            <div className='heti m-auto pt-4 !max-w-2xl' dangerouslySetInnerHTML={{ __html: html }} />
                         </div>
                         <div className='bg-sky-300 mt-8 p-2 text-xs font-medium text-gray-600'>
                             <div>作者：{frontmatter.author || author}</div>

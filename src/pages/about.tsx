@@ -21,7 +21,7 @@ const AboutPage: React.FC<PageProps<AboutPageData>> = ({ data }) => {
                             <div className='text-2xl font-bold font-mono text-center text-gray-600'>{frontmatter.title}</div>
                         </div>
                         <Divider />
-                        <div className='heti ml-auto pt-4 !max-w-2xl' dangerouslySetInnerHTML={{ __html: html }} />
+                        <div className='heti m-auto pt-4 !max-w-2xl' dangerouslySetInnerHTML={{ __html: html }} />
                     </div>
                 </Box>
                 <Box className='mt-8 mb-8'>
