@@ -1,5 +1,6 @@
 ---
 title: '使用 dm-crypt 加密 archLinux 根分区'
+author: Nworm
 date: 2022-12-04 12:50:00
 tags: 
     - dm-crypt

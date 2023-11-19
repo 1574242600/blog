@@ -1,5 +1,6 @@
 ---
 title: '[nodejs]koa框架 206 Partial Content'
+author: Nworm
 date: 2020-04-10 12:40:00
 tags: 
     - js
