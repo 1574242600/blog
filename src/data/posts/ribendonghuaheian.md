@@ -1,5 +1,6 @@
 ---
 title: 日本动画黑暗的一天
+author: Nworm
 date: 2019-07-18 17:17
 tags: 
     - 事件 
