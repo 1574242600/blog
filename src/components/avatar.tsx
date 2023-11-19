@@ -1,4 +1,4 @@
-import * as React from 'react'
+/* import * as React from 'react'
 import { StaticImage } from 'gatsby-plugin-image'
 
 const Avatar: React.FC<AvatarProps> = ({ alt }) => {
@@ -15,4 +15,4 @@ export interface AvatarProps {
     alt: string
 }
 
-export default Avatar
+export default Avatar */
