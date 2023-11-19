@@ -20,6 +20,7 @@
         "disqus-react": "^1.1.5",
         "gatsby": "^5.10.0",
         "gatsby-awesome-pagination": "^0.3.8",
+        "gatsby-plugin-feed": "^5.12.3",
         "gatsby-plugin-image": "^3.10.0",
         "gatsby-plugin-sharp": "^5.10.0",
         "gatsby-plugin-sitemap": "^6.12.3",

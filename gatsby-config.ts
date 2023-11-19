@@ -46,6 +46,67 @@ const config: GatsbyConfig = {
                 ],
                 excerpt_separator: '<!--more-->'
             }
+        },
+        {
+            resolve: 'gatsby-plugin-feed',
+            options: {
+                query: `
+                    {
+                        site {
+                            siteMetadata {
+                                title
+                                description
+                                siteUrl
+                            }
+                        }
+                    }
+                `,
+                feeds: [
+                    {
+                        /// @ts-expect-error
+                        serialize: ({ query: { site, allMarkdownRemark } }) => {
+                            /// @ts-expect-error
+                            return allMarkdownRemark.edges.map(edge => {
+                                return Object.assign({}, edge.node.frontmatter, {
+                                    description: edge.node.excerpt,
+                                    date: edge.node.frontmatter.date,
+                                    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+                                    url: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                                    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+                                    guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                                    custom_elements: [{ 'content:encoded': edge.node.html }]
+                                })
+                            })
+                        },
+                        query: `
+                            {
+                                allMarkdownRemark(
+                                    sort: {frontmatter: {date: DESC}}
+                                    filter: {fileAbsolutePath: {regex: "/(?<!about)\\\\.md$/"}}
+                                ) {
+                                    edges {
+                                        node {
+                                            excerpt
+                                            html
+                                            fields { 
+                                                slug 
+                                            }
+                                            frontmatter {
+                                                title
+                                                date
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        `,
+                        output: '/rss.xml',
+                        title: 'Nworm',
+                        match: '^/post/',
+                        language: 'zh-CN'
+                    }
+                ]
+            }
         }
     ]
 }
