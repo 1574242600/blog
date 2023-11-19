@@ -22,6 +22,7 @@
         "gatsby-awesome-pagination": "^0.3.8",
         "gatsby-plugin-image": "^3.10.0",
         "gatsby-plugin-sharp": "^5.10.0",
+        "gatsby-plugin-sitemap": "^6.12.3",
         "gatsby-remark-autolink-headers": "github:1574242600/gatsby-remark-autolink-headers",
         "gatsby-remark-prismjs": "github:1574242600/gatsby-remark-prismjs",
         "gatsby-source-filesystem": "^5.10.0",

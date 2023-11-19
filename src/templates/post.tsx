@@ -8,6 +8,7 @@ import PostHeader from '@components/postHeader'
 import Link from '@components/link'
 import Box from '@components/box'
 import Disqus from '@components/comment/disqus'
+import { isBrowser } from 'src/utils'
 
 // todo 文章目录，图片优化
 const PostPage: React.FC<PageProps<PostPageData>> = ({ data }) => {
@@ -33,11 +34,11 @@ const PostPage: React.FC<PageProps<PostPageData>> = ({ data }) => {
                     </Box>
                     <Box className='mt-8 mb-8'>
                         <div className='p-2'>
-                            { comment.type === 'disqus' &&
+                            { isBrowser() && comment.type === 'disqus' &&
                                 <Disqus
                                     title={frontmatter.title}
                                     identifier={slug}
-                                    url={window.location.href}
+                                    url={location.href}
                                     shortname={comment.id}
                                 />
                             }

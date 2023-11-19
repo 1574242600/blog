@@ -6,6 +6,7 @@ import { DeepNonNullable } from 'ts-essentials'
 import Divider from '@components/divider'
 import Box from '@components/box'
 import Disqus from '@components/comment/disqus'
+import { isBrowser } from 'src/utils'
 
 const AboutPage: React.FC<PageProps<AboutPageData>> = ({ data }) => {
     const { comment } = useSiteMetadata()
@@ -26,11 +27,11 @@ const AboutPage: React.FC<PageProps<AboutPageData>> = ({ data }) => {
                 </Box>
                 <Box className='mt-8 mb-8'>
                     <div className='p-2'>
-                        { comment.type === 'disqus' &&
+                        { isBrowser() && comment.type === 'disqus' &&
                                 <Disqus
                                     title={frontmatter.title}
                                     identifier={slug}
-                                    url={window.location.href}
+                                    url={location.href}
                                     shortname={comment.id}
                                 />
                         }

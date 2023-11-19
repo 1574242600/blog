@@ -15,10 +15,10 @@ const Footer: React.FC<FooterProps> = ({ siteMetadata }) => {
             </div>
             <div className='flex flex-row justify-center'>
                 <span className='basis-10'>
-                    <Link href={'/sitemap.xml'} >sitemap</Link>
+                    <Link href={'/sitemap-index.xml'} >SiteMap</Link>
                 </span>
                 <span className='basis-10'>
-                    <Link href={'/rss.xml'}>rss</Link>
+                    <Link href={'/rss.xml'}>RSS</Link>
                 </span>
             </div>
         </div>

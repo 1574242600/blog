@@ -13,7 +13,7 @@
     "sourceMap": true,
     "paths": {
       "@hooks/*": ["./src/hooks/*"],
-      "@components/*": ["./src/components/*"],
+      "@components/*": ["./src/components/*"]
     }
   },
   "include": [
