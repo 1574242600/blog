@@ -20,9 +20,13 @@ const Disqus: React.FC<DisqusProps> = (props) => {
             }
 
             { isReachable === false &&
-                 <div className='font-medium text-gray-600'>
-                    当前您的网络似乎无法访问 Disqus，请尝试更换网络环境。
-                 </div>
+                <div className='font-medium text-gray-600'>
+                    我们检测到您的网络似乎无法访问 Disqus，请尝试更换网络环境。
+                    <span
+                        className='ml-4 text-sky-600 hover:text-sky-700 cursor-pointer'
+                        onClick={() => setIsReachable(true)}
+                    >强制加载</span>
+                </div>
             }
 
             { isReachable === true &&
@@ -51,16 +55,14 @@ export interface DisqusProps {
 export default Disqus
 
 // eslint-disable-next-line @typescript-eslint/promise-function-async
-function test (shortname: string): Promise<boolean> {
-    const p1 = fetch(`https://${shortname}.disqus.com/embed.js`, {
-        method: 'HEAD'
-    })
-        .then(r => r.status === 200)
-        .catch(() => false)
+async function test (shortname: string): Promise<boolean> {
+    // only cloudflare
+    const loc = await fetch('/cdn-cgi/trace')
+        // eslint-disable-next-line @typescript-eslint/promise-function-async
+        .then(r => r.text())
+        .then(t => t.match(/loc=(.*)/))
+        .then(arr => arr ? arr[1] : 'CN')
+        .catch(() => 'CN')
 
-    const p2 = new Promise<boolean>((resolve) => setTimeout(() => resolve(false), 5000))
-
-    const result = Promise.race([p1, p2])
-
-    return result
+    return loc !== 'CN'
 }
