@@ -18,9 +18,6 @@ const config: GatsbyConfig = {
     plugins: [
         'gatsby-plugin-postcss',
         'gatsby-plugin-tsconfig-paths',
-        'gatsby-plugin-image',
-        'gatsby-plugin-sharp',
-        'gatsby-transformer-sharp',
         'gatsby-plugin-sitemap',
         'gatsby-transformer-json',
         {
