@@ -1,8 +1,8 @@
 import * as React from 'react'
-import type { LastArrayElement } from 'type-fest'
 import { SiteMetadata } from '@hooks/use-site-metadata'
 import Svg from './svg'
 import Link from './link'
+import { Head } from 'ts-essentials'
 
 const Contacts: React.FC<ContactsProps> = ({ contacts }) => {
     return (
@@ -16,7 +16,7 @@ const Contacts: React.FC<ContactsProps> = ({ contacts }) => {
     )
 }
 
-const Contact: React.FC<LastArrayElement<ContactsProps['contacts']>> = ({ name, id, url }) => {
+const Contact: React.FC<Head<ContactsProps['contacts']>> = ({ name, id, url }) => {
     const href = url.replace(/\{id\}/, id)
     const svgClass = 'text-2xl text-gray-600 hover:text-sky-400'
 
